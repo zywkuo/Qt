@@ -1,10 +1,17 @@
 import QtQuick
 import QtQuick.Window
 
-Rectangle {
-    id: root
-    width: 800
-    height: 600
+Window {
+    width: 800 //background.width
+    height: 600 //background.height
+    visible: true
+    title: qsTr("Hello Qt Quick")
+
+    //Rectangle {
+    //    id: root
+    //    width: 800
+    //    height: 600
+    //}
 
     //    color: "#565656"
     //    onHeightChanged: console.log('height:', height)
@@ -221,28 +228,355 @@ Rectangle {
     //    lmage.Pad:图像未转换
 
     //    MouseArea 矩形不可见，可以捕获鼠标事件
-    Rectangle {
-        id: rect1
-        x: 12
-        y: 12
-        width: 76
-        height: 96
-        color: 'lightsteelblue'
-        MouseArea {
-            width: parent.width
-            height: parent.height
-            onClicked: rect2.visible = !rect2.visible
-        }
+    //    Rectangle {
+    //        id: rect1
+    //        x: 12
+    //        y: 12
+    //        width: 76
+    //        height: 96
+    //        color: 'lightsteelblue'
+    //        MouseArea {
+    //            width: parent.width
+    //            height: parent.height
+    //            onClicked: rect2.visible = !rect2.visible
+    //        }
+    //    }
+
+    //    Rectangle {
+    //        id: rect2
+    //        x: 112
+    //        y: 12
+    //        width: 76
+    //        height: 96
+    //        border.color: 'lightsteelblue'
+    //        border.width: 4
+    //        radius: 8
+    //    }
+
+    //    Component组件
+    //    ButtonComponent {
+    //        text:"Go Go"
+    //        color: "yellow"
+    //        onClicked: {
+    //            text1.text = "Go 了"
+    //        }
+    //    }
+
+    //    Text {
+    //        id: text1
+    //        x:12
+    //        y:76
+    //        width: 116
+    //        height: 26
+    //        text: "waiting..."
+    //        horizontalAlignment: Text.AlignHCenter
+    //    }
+
+    //    简单变换  平移 旋转 缩放
+    //    MouseArea {
+    //        anchors.fill: parent
+    //        onClicked: {
+    //            image1.x=20
+    //            image2.rotation=0
+    //            image3.rotation=0
+    //            image3.scale=1
+    //        }
+    //    }
+    //    ImageComponent{
+    //        id:image1
+    //        x:20
+    //        y:20
+    //        onClicked:{
+    //            x+=10
+    //        }
+    //    }
+
+    //    ImageComponent{
+    //        id:image2
+    //        x:120
+    //        y:20
+    //        onClicked:{
+    //            rotation+=10
+    //        }
+    //    }
+    //    ImageComponent{
+    //        id:image3
+    //        x:220
+    //        y:20
+    //        onClicked:{
+    //            rotation+=10
+    //            scale+=0.1
+    //        }
+    //    }
+
+    // 定位器
+    //    DarkSquare {
+    //        id: dark1
+    //        width: parent.width
+    //        height: 300
+    //        Column {
+    //            id: colume
+    //            anchors.centerIn: parent
+    //            spacing: 10
+    //            BlueSquare {}
+    //            BrightSquare {
+    //                width: 100
+    //            }
+    //            GreenSquare {}
+    //            RedSquare {}
+    //        }
+    //    }
+
+    //    DarkSquare {
+    //        id: dark2
+    //        width: parent.width
+    //        height: 300
+    //        Row {
+    //            id: row
+    //            anchors.centerIn: parent
+    //            spacing: 10
+    //            BlueSquare {}
+    //            BrightSquare {
+    //                width: 100
+    //            }
+    //            GreenSquare {}
+    //            RedSquare {}
+    //        }
+    //    }
+
+    //    DarkSquare {
+    //        id: dark3
+    //        width: parent.width
+    //        height: 300
+    //        Grid {
+    //            id: grid
+    //            anchors.centerIn: parent
+    //            spacing: 10
+    //            rows: 2
+    //            columns: 3
+    //            BlueSquare {}
+    //            BrightSquare {}
+    //            GreenSquare {}
+    //            RedSquare {}
+    //            BlueSquare {}
+    //            BrightSquare {}
+    //        }
+    //    }
+
+    //    DarkSquare {
+    //        id: dark4
+    //        width: parent.width
+    //        height: 300
+    //        Flow {
+    //            id: flow
+    //            anchors.fill: parent
+    //            anchors.margins: 10
+    //            spacing: 10
+    //            BlueSquare {}
+    //            BrightSquare {}
+    //            GreenSquare {}
+    //            RedSquare {}
+    //            BlueSquare {}
+    //            BrightSquare {}
+    //        }
+    //    }
+
+    //    DarkSquare {
+    //        id: dark5
+    //        width: parent.width
+    //        height: 300
+    //        property variant colorArray: ["#00bde3", "#67c111", "#ea7025"]
+
+    //        Grid {
+    //            id: grid2
+    //            anchors.centerIn: parent
+    //            anchors.margins: 10
+    //            spacing: 10
+    //            Repeater {
+    //                model: 16
+    //                Rectangle {
+    //                    id: rect1
+    //                    required property int index
+    //                    property int corlorIndex: Math.floor(Math.random() * 3)
+    //                    color: dark5.colorArray[corlorIndex]
+    //                    width: 56
+    //                    height: 56
+    //                    Text {
+    //                        id: text
+    //                        anchors.centerIn: parent
+    //                        // required property int index 先定义
+    //                        text: "Cell" + parent.index/*rect1.Positioner.index*/
+    //                        color:"#ffffff"
+    //                    }
+    //                }
+    //            }
+    //        }
+    //    }
+    //    GreenSquare2 {
+    //        BlueSquare2 {
+    //            text: "(1)"
+    //            anchors.fill: parent
+    //            anchors.margins: 8
+    //        }
+    //    }
+
+    //    GreenSquare2 {
+    //        x: 120
+    //        BlueSquare2 {
+    //            text: "(2)"
+    //            anchors.left: parent.left
+    //            anchors.top: parent.top
+    //            anchors.leftMargin: 8
+    //            anchors.topMargin: 8
+    //        }
+    //    }
+
+    //    GreenSquare2 {
+    //        x: 240
+    //        BlueSquare2 {
+    //            text: "(3)"
+    //            anchors.left: parent.right
+    //        }
+    //    }
+    //    GreenSquare2 {
+    //        x: 400
+    //        BlueSquare2 {
+    //            id: blue4_1
+    //            text: "(4-1)"
+    //            anchors.top: parent.top
+    //            anchors.margins: 8
+    //            anchors.horizontalCenter: parent.horizontalCenter
+    //            height: 25
+    //        }
+    //        BlueSquare2 {
+    //            text: "(4-2)"
+    //            anchors.top: blue4_1.bottom
+    //            anchors.margins: 8
+    //            anchors.horizontalCenter: parent.horizontalCenter
+    //            height: 25
+    //            width: 75
+    //        }
+    //    }
+
+    //    GreenSquare2 {
+    //        x: 520
+    //        BlueSquare2 {
+    //            text: "(5)"
+    //            anchors.centerIn: parent
+    //        }
+    //    }
+
+    //    GreenSquare2 {
+    //        x: 640
+    //        BlueSquare2 {
+    //            text: "(6)"
+    //            anchors.horizontalCenter: parent.horizontalCenter
+    //            anchors.verticalCenter: parent.verticalCenter
+    //            anchors.horizontalCenterOffset: -20
+    //        }
+    //    }
+
+    // TextInput  TextEdit
+    //    Rectangle {
+    //        width: 200
+    //        height: 80
+    //        color: "linen"
+    //        TextInput {
+    //            id: input1
+    //            x: 8
+    //            y: 8
+    //            width: 96
+    //            height: 20
+    //            focus: true
+    //            text: "Text Input 1"
+    //            KeyNavigation.tab: input2
+    //        }
+    //        TextInput {
+    //            id: input2
+    //            x: 8
+    //            y: 36
+    //            width: 96
+    //            height: 20
+    //            text: "Text Input 2"
+    //            KeyNavigation.tab: input1
+    //        }
+    //    }
+    //    TextInputComponent {
+    //        id: input1
+    //        text: "Text Input 1"
+    //        input.font.pixelSize: 18
+    //        height: input.font.pixelSize + 10
+    //        input.color: "#fff"
+    //        focus: true
+    //        KeyNavigation.tab: input2
+
+    //    }
+    //    TextInputComponent {
+    //        id: input2
+    //        text: "Text Input 2"
+    //        input.font.pixelSize: 18
+    //        y: input1.y + input1.height + 12
+    //        height: input.font.pixelSize + 10
+    //        input.color: "#fff"
+    //        KeyNavigation.tab: input1
+    //    }
+    //    TextEditComponent {
+    //        id: edit
+    //        text: "Text Edit 1"
+    //        textEdit.font.pixelSize: 18
+    //        y: input2.y + input2.height + 12
+
+    //        textEdit.color: "#fff"
+    //        KeyNavigation.tab: input1
+    //    }
+
+    //    keys
+    //    Rectangle {
+    //        width: 500
+    //        height: 300
+    //        color: "#f5f5f5"
+    //        Rectangle {
+    //            id: square
+    //            width: 100
+    //            height: 100
+    //            color: "green"
+    //            border.color: Qt.lighter(color)
+    //        }
+    //        focus: true
+    //        Keys.onLeftPressed: square.x -= 8
+    //        Keys.onRightPressed: square.x += 8
+    //        Keys.onUpPressed: square.y -= 8
+    //        Keys.onDownPressed: square.y += 8
+    //        Keys.onPressed: event => {
+    //                            switch (event.key) {
+    //                                case Qt.Key_Plus:
+    //                                square.scale += 0.1
+    //                                break
+    //                                case Qt.Key_Minus:
+    //                                square.scale -= 0.1
+    //                                break
+    //                            }
+    //                        }
+    //    }
+
+    //    动画
+
+    Image {
+        id: image1
+        source: "file"
     }
 
-    Rectangle {
-        id: rect2
-        x: 112
-        y: 12
-        width: 76
-        height: 96
-        border.color: 'lightsteelblue'
-        border.width: 4
-        radius: 8
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
