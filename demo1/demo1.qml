@@ -1,7 +1,9 @@
 import QtQuick
 import QtQuick.Window
+import QtQuick.Layouts
 
 Window {
+    id: root
     width: 800 //background.width
     height: 600 //background.height
     visible: true
@@ -560,23 +562,412 @@ Window {
     //    }
 
     //    动画
+    //    AnimationComponent {}
+    //    AnimationComponentV2 {
+    //        id: lian
+    //        x: 20
+    //        y: root.height - height
+    //        source: "./images/1.jpg"
+    //        text: 'animation on property1'
 
-    Image {
-        id: image1
-        source: "file"
+    //        NumberAnimation on y {
+    //            to: 40
+    //            duration: 3000
+    //        }
+    //    }
+
+    //    AnimationComponentV2 {
+    //        id: lian2
+    //        x: 100 + lian.width
+    //        y: root.height - height
+    //        source: "./images/1.jpg"
+    //        text: 'animation on property2'
+
+    //        Behavior on y {
+    //            NumberAnimation {
+    //                duration: 3000
+    //            }
+    //        }
+
+    //        onClicked: y = 40
+    //    }
+
+    //    AnimationComponentV2 {
+    //        id: lian3
+    //        x: 100 + lian2.width + lian2.x
+    //        y: root.height - height
+    //        source: "./images/1.jpg"
+    //        text: 'animation on property3'
+    //        // onClicked: anim.start()
+    //        onClicked: anim.restart()
+    //        NumberAnimation {
+    //            id: anim
+    //            target: lian3
+    //            from: root.height - lian3.height
+    //            to: 40
+    //            duration: 3000
+    //            property: "y"
+    //            running: area.pressed
+    //        }
+
+    //        MouseArea {
+    //            id: area
+    //            anchors.fill: parent
+    //        }
+    //    }
+
+    // 缓动曲线
+    // Linear InExpo OutExpo InOutExpo InOutCubic SineCurve InOutCirc InOutElastic InOutBack InOutBounce
+    //    Rectangle {
+    //        id: easing
+    //        width: childrenRect.width
+    //        height: childrenRect.height
+    //        color: "gray"
+    //        gradient: Gradient {
+    //            GradientStop {
+    //                position: 0.0
+    //                color: eas.color
+    //            }
+    //            GradientStop {
+    //                position: 1.0
+    //                color: Qt.lighter((eas.color), 1.5)
+    //            }
+    //        }
+    //        ColumnLayout {
+    //            spacing: 20
+    //            Grid {
+    //                spacing: 10
+    //                columns: 5
+    //                EasingType {
+    //                    title: 'Linear'
+    //                    onClicked: {
+    //                        animation.easing.type = Easing.Linear
+    //                        box.toggle = !box.toggle
+    //                    }
+    //                }
+    //                EasingType {
+    //                    title: 'InExpo'
+    //                    onClicked: {
+    //                        animation.easing.type = Easing.InExpo
+    //                        box.toggle = !box.toggle
+    //                    }
+    //                }
+    //                EasingType {
+    //                    title: 'OutExpo'
+    //                    onClicked: {
+    //                        animation.easing.type = Easing.OutExpo
+    //                        box.toggle = !box.toggle
+    //                    }
+    //                }
+    //                EasingType {
+    //                    title: 'InOutExpo'
+    //                    onClicked: {
+    //                        animation.easing.type = Easing.InOutExpo
+    //                        box.toggle = !box.toggle
+    //                    }
+    //                }
+    //                EasingType {
+    //                    title: 'InOutCubic'
+    //                    onClicked: {
+    //                        animation.easing.type = Easing.InOutCubic
+    //                        box.toggle = !box.toggle
+    //                    }
+    //                }
+    //                EasingType {
+    //                    title: 'SineCurve'
+    //                    onClicked: {
+    //                        animation.easing.type = Easing.SineCurve
+    //                        box.toggle = !box.toggle
+    //                    }
+    //                }
+    //                EasingType {
+    //                    title: 'InOutCirc'
+    //                    onClicked: {
+    //                        animation.easing.type = Easing.InOutCirc
+    //                        box.toggle = !box.toggle
+    //                    }
+    //                }
+    //                EasingType {
+    //                    title: 'InOutElastic'
+    //                    onClicked: {
+    //                        animation.easing.type = Easing.InOutElastic
+    //                        box.toggle = !box.toggle
+    //                    }
+    //                }
+    //                EasingType {
+    //                    title: 'InOutBack'
+    //                    onClicked: {
+    //                        animation.easing.type = Easing.InOutBack
+    //                        box.toggle = !box.toggle
+    //                    }
+    //                }
+    //                EasingType {
+    //                    title: 'InOutBounce'
+    //                    onClicked: {
+    //                        animation.easing.type = Easing.InOutBounce
+    //                        box.toggle = !box.toggle
+    //                    }
+    //                }
+    //            }
+    //            Rectangle {
+    //                height: 100
+    //                Layout.fillWidth: true
+    //                gradient: Gradient {
+    //                    GradientStop {
+    //                        position: 0.0
+    //                        color: "white"
+    //                    }
+    //                    GradientStop {
+    //                        position: 1.0
+    //                        color: 'green'
+    //                    }
+    //                }
+    //                Rectangle {
+    //                    id: box
+    //                    property bool toggle
+    //                    anchors.verticalCenter: parent.verticalCenter
+    //                    width: 80
+    //                    height: 80
+
+    //                    gradient: Gradient {
+    //                        GradientStop {
+    //                            position: 0.0
+    //                            color: "red"
+    //                        }
+    //                        GradientStop {
+    //                            position: 1.0
+    //                            color: 'yellow'
+    //                        }
+    //                    }
+    //                    x: toggle ? 20 : easing.width - width - 20
+    //                    Behavior on x {
+    //                        NumberAnimation {
+    //                            id: animation
+    //                            duration: 1000
+    //                        }
+    //                    }
+    //                }
+    //            }
+    //        }
+    //    }
+
+    //    动画分组
+    //    property int duration: 3000
+
+    //    Image {
+    //        id: img
+    //        source: "./images/background.jpg"
+    //        anchors.fill: parent
+    //    }
+    //    AnimationComponentV3 {
+    //        id: ufo
+    //        x: 20
+    //        y: root.height - height
+    //        source: './images/1.jpg'
+    //        text: 'ufo'
+    //        onClicked: anim.start()
+    //    }
+    //顺序动画
+    //    SequentialAnimation {
+    //        id: anim
+    //        NumberAnimation {
+    //            target: ufo
+    //            properties: 'y'
+    //            from: root.height - ufo.height
+    //            to: 20
+    //            duration: root.duration
+    //        }
+    //        NumberAnimation {
+    //            target: ufo
+    //            properties: 'x'
+    //            from: 20
+    //            to: 500
+    //            duration: root.duration
+    //        }
+    //    }
+
+    //    并行动画
+    //    ParallelAnimation {
+    //        id: anim
+    //        NumberAnimation {
+    //            target: ufo
+    //            properties: 'y'
+    //            from: root.height - ufo.height
+    //            to: 20
+    //            duration: root.duration
+    //        }
+    //        NumberAnimation {
+    //            target: ufo
+    //            properties: 'x'
+    //            from: 20
+    //            to: 500
+    //            duration: root.duration
+    //        }
+    //    }
+
+    //    分组动画嵌套
+    //    Rectangle {
+    //        id: sky
+    //        width: parent.width
+    //        height: 400
+    //        gradient: Gradient {
+    //            GradientStop {
+    //                position: 0.0
+    //                color: '#0080ff'
+    //            }
+    //            GradientStop {
+    //                position: 1.0
+    //                color: '#66ccff'
+    //            }
+    //        }
+    //    }
+    //    Rectangle {
+    //        id: ground
+    //        anchors.top: sky.bottom
+    //        width: parent.width
+    //        height: root.height - sky.height
+    //        gradient: Gradient {
+    //            GradientStop {
+    //                position: 0.0
+    //                color: '#00ff00'
+    //            }
+    //            GradientStop {
+    //                position: 1.0
+    //                color: '#00803f'
+    //            }
+    //        }
+    //    }
+    //    Image {
+    //        id: ball
+    //        source: "./images/football1.png"
+    //        scale: 0.8
+    //        y: root.height - height
+
+    //        MouseArea {
+    //            anchors.fill: parent
+    //            onClicked: {
+    //                ball.x = 0
+    //                ball.y = root.height - ball.height
+    //                ball.rotation = 0
+    //                anim.restart()
+    //            }
+    //        }
+    //    }
+    //    property int duration: 3000
+    //    ParallelAnimation {
+    //        id: anim
+    //        SequentialAnimation {
+    //            NumberAnimation {
+    //                properties: 'y'
+    //                target: ball
+    //                to: 20
+    //                duration: root.duration * 0.6
+    //                easing.type: Easing.OutCirc
+    //            }
+    //            NumberAnimation {
+    //                properties: 'y'
+    //                target: ball
+    //                to: root.height - ball.height
+    //                duration: root.duration * 0.4
+    //                easing.type: Easing.OutBounce
+    //            }
+    //        }
+    //        NumberAnimation {
+    //            properties: 'x'
+    //            target: ball
+    //            to: 380
+    //            duration: root.duration
+    //        }
+    //        RotationAnimation {
+    //            properties: 'rotation'
+    //            target: ball
+    //            to: 360 * 4
+    //            duration: root.duration
+    //        }
+    //    }
+
+    //    状态和转换
+    Item {
+        id: lightBox
+        width: 150
+        height: 260
+        property color black: 'black'
+        property color red: 'red'
+        property color green: 'green'
+        Rectangle {
+            anchors.fill: parent
+            color: '#333333'
+        }
+        state: 'stop'
+        states: [
+            State {
+                name: "stop"
+                PropertyChanges {
+                    target: light1
+                    color: lightBox.red
+                }
+                PropertyChanges {
+                    target: light2
+                    color: lightBox.black
+                }
+            },
+            State {
+                name: "go"
+                PropertyChanges {
+                    target: light1
+                    color: lightBox.black
+                }
+                PropertyChanges {
+                    target: light2
+                    color: lightBox.green
+                }
+            }
+        ]
+
+        transitions: [
+            Transition {
+                // from: "stop"
+                // to: "go"
+                from: '*'
+                to: '*'
+                ColorAnimation {
+                    target: light1
+                    properties: 'color'
+                    duration: 500
+                }
+                ColorAnimation {
+                    target: light2
+                    properties: 'color'
+                    duration: 500
+                }
+            }
+        ]
+
+        Rectangle {
+            id: light1
+            radius: width / 2
+            width: 100
+            height: width
+            color: lightBox.black
+            anchors.horizontalCenter: parent.horizontalCenter
+            y: 20
+            border.color: Qt.lighter(color, 1.1)
+        }
+        Rectangle {
+            id: light2
+            radius: width / 2
+            width: 100
+            height: width
+            color: lightBox.black
+            anchors.horizontalCenter: parent.horizontalCenter
+            y: light1.height + 40
+            border.color: Qt.lighter(color, 1.1)
+        }
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: parent.state = parent.state === 'stop' ? 'go' : 'stop'
+        }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
