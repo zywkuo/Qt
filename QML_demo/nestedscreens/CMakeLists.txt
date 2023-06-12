@@ -16,7 +16,7 @@ qt_add_executable(appnestedscreens
 qt_add_qml_module(appnestedscreens
     URI nestedscreens
     VERSION 1.0
-    QML_FILES Main.qml Home.qml
+    QML_FILES Main.qml Home.qml About.qml Profile.qml EditProfile.qml swipeFile/Swipe1.qml swipeFile/Swipe2.qml swipeFile/Swipe3.qml
     RESOURCES images/icon.ico
 )
 

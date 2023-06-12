@@ -6,7 +6,7 @@
 int main(int argc, char *argv[]) {
   QGuiApplication app(argc, argv);
 
-  app.setWindowIcon(QIcon("nestedscreens/images/icon.cio"));
+  app.setWindowIcon(QIcon("nestedscreens/images/icon.ico"));
   QQuickStyle::setStyle("Material");
 
   QQmlApplicationEngine engine;
