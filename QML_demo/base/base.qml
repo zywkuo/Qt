@@ -887,87 +887,89 @@ Window {
     //    }
 
     //    状态和转换
-    Item {
-        id: lightBox
-        width: 150
-        height: 260
-        property color black: 'black'
-        property color red: 'red'
-        property color green: 'green'
-        Rectangle {
-            anchors.fill: parent
-            color: '#333333'
-        }
-        state: 'stop'
-        states: [
-            State {
-                name: "stop"
-                PropertyChanges {
-                    target: light1
-                    color: lightBox.red
-                }
-                PropertyChanges {
-                    target: light2
-                    color: lightBox.black
-                }
-            },
-            State {
-                name: "go"
-                PropertyChanges {
-                    target: light1
-                    color: lightBox.black
-                }
-                PropertyChanges {
-                    target: light2
-                    color: lightBox.green
-                }
-            }
-        ]
+    //    Item {
+    //        id: lightBox
+    //        width: 150
+    //        height: 260
+    //        property color black: 'black'
+    //        property color red: 'red'
+    //        property color green: 'green'
+    //        Rectangle {
+    //            anchors.fill: parent
+    //            color: '#333333'
+    //        }
+    //        state: 'stop'
+    //        states: [
+    //            State {
+    //                name: "stop"
+    //                PropertyChanges {
+    //                    target: light1
+    //                    color: lightBox.red
+    //                }
+    //                PropertyChanges {
+    //                    target: light2
+    //                    color: lightBox.black
+    //                }
+    //            },
+    //            State {
+    //                name: "go"
+    //                PropertyChanges {
+    //                    target: light1
+    //                    color: lightBox.black
+    //                }
+    //                PropertyChanges {
+    //                    target: light2
+    //                    color: lightBox.green
+    //                }
+    //            }
+    //        ]
 
-        transitions: [
-            Transition {
-                // from: "stop"
-                // to: "go"
-                from: '*'
-                to: '*'
-                ColorAnimation {
-                    target: light1
-                    properties: 'color'
-                    duration: 500
-                }
-                ColorAnimation {
-                    target: light2
-                    properties: 'color'
-                    duration: 500
-                }
-            }
-        ]
+    //        transitions: [
+    //            Transition {
+    //                // from: "stop"
+    //                // to: "go"
+    //                from: '*'
+    //                to: '*'
+    //                ColorAnimation {
+    //                    target: light1
+    //                    properties: 'color'
+    //                    duration: 500
+    //                }
+    //                ColorAnimation {
+    //                    target: light2
+    //                    properties: 'color'
+    //                    duration: 500
+    //                }
+    //            }
+    //        ]
 
-        Rectangle {
-            id: light1
-            radius: width / 2
-            width: 100
-            height: width
-            color: lightBox.black
-            anchors.horizontalCenter: parent.horizontalCenter
-            y: 20
-            border.color: Qt.lighter(color, 1.1)
-        }
-        Rectangle {
-            id: light2
-            radius: width / 2
-            width: 100
-            height: width
-            color: lightBox.black
-            anchors.horizontalCenter: parent.horizontalCenter
-            y: light1.height + 40
-            border.color: Qt.lighter(color, 1.1)
-        }
+    //        Rectangle {
+    //            id: light1
+    //            radius: width / 2
+    //            width: 100
+    //            height: width
+    //            color: lightBox.black
+    //            anchors.horizontalCenter: parent.horizontalCenter
+    //            y: 20
+    //            border.color: Qt.lighter(color, 1.1)
+    //        }
+    //        Rectangle {
+    //            id: light2
+    //            radius: width / 2
+    //            width: 100
+    //            height: width
+    //            color: lightBox.black
+    //            anchors.horizontalCenter: parent.horizontalCenter
+    //            y: light1.height + 40
+    //            border.color: Qt.lighter(color, 1.1)
+    //        }
 
-        MouseArea {
-            anchors.fill: parent
-            onClicked: parent.state = parent.state === 'stop' ? 'go' : 'stop'
-        }
-    }
+    //        MouseArea {
+    //            anchors.fill: parent
+    //            onClicked: parent.state = parent.state === 'stop' ? 'go' : 'stop'
+    //        }
+    //    }
 
+
+    Deleqateshapeshift {}
 }
