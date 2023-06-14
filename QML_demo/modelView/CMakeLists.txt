@@ -20,6 +20,7 @@ qt_add_qml_module(appmodelView
         RepeaterExample.qml
         ListViewExample.qml
         GridViewExample.qml
+        DelegateAnimateExample.qml
         common/BlueBox.qml
         common/GreenBox.qml
 )

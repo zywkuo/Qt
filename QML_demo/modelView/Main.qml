@@ -7,13 +7,22 @@ Window {
     visible: true
     title: qsTr("Model View")
     Rectangle {
-        width: parent.width
+        width: parent.width / 2
+        color: "#dddddd"
         height: 300
-
         RepeaterExample {}
-
         Text {
             text: qsTr("RepeaterExample")
+        }
+    }
+    Rectangle {
+        width: parent.width / 2
+        height: 300
+        x: parent.width / 2
+        color: "#cccccc"
+        DelegateAnimateExample {}
+        Text {
+            text: qsTr("DelegateAnimateExample")
         }
     }
     Rectangle {
