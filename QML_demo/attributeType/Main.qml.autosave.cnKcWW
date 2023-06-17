@@ -529,28 +529,9 @@ Window {
             }
         }
     }
-
-    Column {
-        Text {
-            font.pointSize: 24
-            text: "<b>Hello</b> <i>World!</i>"
-            wrapMode: Text.WordWrap // 换行
-        }
-        Text {
-            font.pointSize: 24
-            textFormat: Text.RichText // 富文本
-            text: "<b>Hello</b> <i>World!</i>"
-        }
-        Text {
-            font.pointSize: 24
-            textFormat: Text.PlainText // 纯文本
-            text: "<b>Hello</b> <i>World!</i>"
-        }
-        Text {
-            font.pointSize: 24
-            textFormat: Text.MarkdownText
-            text: "**Hello** *World!*"
-        }
+    
+    Text {
+        id: name
+        text: qsTr("text")
     }
-
 }

@@ -17,6 +17,8 @@ qt_add_qml_module(appattributeType
     URI attributeType
     VERSION 1.0
     QML_FILES Main.qml
+    RESOURCES
+        images/1.jpg
 )
 
 set_target_properties(appattributeType PROPERTIES
