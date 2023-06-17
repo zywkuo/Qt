@@ -493,64 +493,220 @@ Window {
     //            text: qsTr("Activity")
     //        }
     //    }
-    TabBar {
-        id: bar
-        width: parent.width
-        TabButton {
-            text: qsTr("Home")
-        }
-        TabButton {
-            text: qsTr("Discover")
-        }
-        TabButton {
-            text: qsTr("Activity")
-        }
-    }
+    //    TabBar {
+    //        id: bar
+    //        width: parent.width
+    //        TabButton {
+    //            text: qsTr("Home")
+    //        }
+    //        TabButton {
+    //            text: qsTr("Discover")
+    //        }
+    //        TabButton {
+    //            text: qsTr("Activity")
+    //        }
+    //    }
 
-    StackLayout {
-        width: parent.width
-        currentIndex: bar.currentIndex
-        Item {
-            id: homeTab
-            Text {
-                text: qsTr("tab1")
+    //    StackLayout {
+    //        width: parent.width
+    //        currentIndex: bar.currentIndex
+    //        Item {
+    //            id: homeTab
+    //            Text {
+    //                text: qsTr("tab1")
+    //            }
+    //        }
+    //        Item {
+    //            id: discoverTab
+    //            Text {
+    //                text: qsTr("tab2")
+    //            }
+    //        }
+    //        Item {
+    //            id: activityTab
+    //            Text {
+    //                text: qsTr("tab3")
+    //            }
+    //        }
+    //    }
+
+    //    Column {
+    //        Text {
+    //            font.pointSize: 24
+    //            text: "<b>Hello</b> <i>World!</i>"
+    //            wrapMode: Text.WordWrap // 换行
+    //        }
+    //        Text {
+    //            font.pointSize: 24
+    //            textFormat: Text.RichText // 富文本
+    //            text: "<b>Hello</b> <i>World!</i>"
+    //        }
+    //        Text {
+    //            font.pointSize: 24
+    //            textFormat: Text.PlainText // 纯文本
+    //            text: "<b>Hello</b> <i>World!</i>"
+    //        }
+    //        Text {
+    //            font.pointSize: 24
+    //            textFormat: Text.MarkdownText
+    //            text: "**Hello** *World!*"
+    //        }
+    //    }
+    //    Button {
+    //        width: 50
+    //        height: 50
+
+    //        onClicked: {
+    //            console.log(popup.visible)
+    //            popup.open()
+    //        }
+    //        text: '打开popup'
+    //    }
+    //    Button {
+    //        width: 50
+    //        height: 50
+    //        x: 60
+    //        onClicked: {
+    //            console.log(popup.visible)
+    //            popup.close()
+    //        }
+    //        text: '关闭popup'
+    //    }
+
+    //    Popup {
+    //        id: popup
+    //        width: 500
+    //        height: 300
+    //        x: 100
+    //        y: 100
+    //        visible: true
+    //        closePolicy: Popup.NoAutoClose
+    //        // modal: true
+    //        dim: true
+    //        enter: Transition {
+    //            NumberAnimation {
+    //                property: "opacity"
+    //                from: 0.0
+    //                to: 1.0
+    //                duration: 200
+    //            }
+    //        }
+    //        exit: Transition {
+    //            NumberAnimation {
+    //                property: "opacity"
+    //                from: 1.0
+    //                to: 0.0
+    //                duration: 200
+    //            }
+    //        }
+
+    //        contentItem: Rectangle {
+    //            anchors.fill: parent
+    //            color: '#fff'
+    //            Text {
+    //                anchors.fill: parent
+    //                text: qsTr("Popup Text  Text  Text  Text  Text  Text  Text  Text  Text")
+    //                font.pixelSize: 20
+    //                // anchors.horizontalCenter: parent.horizontalCenter
+    //                wrapMode: Text.WordWrap
+    //            }
+
+    //            Button{
+    //                anchors.bottom: parent.bottom
+    //                anchors.right: parent.right
+    //                anchors.rightMargin: 20
+    //                anchors.bottomMargin: 20
+    //                text: 'cancel'
+    //                onClicked: {
+    //                    popup.close()
+    //                }
+    //            }
+
+    //            Button{
+    //                anchors.bottom: parent.bottom
+    //                anchors.right: parent.right
+    //                anchors.rightMargin: 200
+    //                anchors.bottomMargin: 20
+    //                text: 'ok'
+    //                onClicked: {
+    //                    popup.close()
+    //                }
+    //            }
+    //        }
+    //    }
+    ListView {
+        id: lv
+        width: 180
+        height: 200
+        header: Rectangle {
+            width: parent.width
+            height: 20
+            color: 'gray'
+        }
+        footer: Rectangle {
+            width: parent.width
+            height: 20
+            color: 'gray'
+        }
+
+        // model: ['111', '222', '333']
+        highlight: Rectangle {
+            color: 'yellow'
+        }
+
+        model: ListModel {
+            ListElement {
+                name: 'name1'
+                number: 'num1'
+            }
+            ListElement {
+                name: 'name2'
+                number: 'num2'
+            }
+            ListElement {
+                name: 'name3'
+                number: 'num3'
             }
         }
-        Item {
-            id: discoverTab
+        spacing: 10
+        delegate: Rectangle {
+            width: parent.width
+            height: 30
+            color: 'transparent'
             Text {
-                text: qsTr("tab2")
+                // id: name
+                text: `${name} ${number}`
+            }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    console.log(index)
+                    console.log(lv.currentIndex)
+                    lv.currentIndex = index
+                }
             }
         }
-        Item {
-            id: activityTab
-            Text {
-                text: qsTr("tab3")
+
+        section.property: "name"
+        section.criteria: ViewSection.FullString
+        section.delegate: sectionHeading
+
+        // The delegate for each section header
+        Component {
+            id: sectionHeading
+            Rectangle {
+                width: lv.width
+                height: childrenRect.height
+                color: "lightsteelblue"
+
+                required property string section
+
+                Text {
+                    text: parent.section
+                    font.bold: true
+                    font.pixelSize: 20
+                }
             }
         }
     }
-
-    Column {
-        Text {
-            font.pointSize: 24
-            text: "<b>Hello</b> <i>World!</i>"
-            wrapMode: Text.WordWrap // 换行
-        }
-        Text {
-            font.pointSize: 24
-            textFormat: Text.RichText // 富文本
-            text: "<b>Hello</b> <i>World!</i>"
-        }
-        Text {
-            font.pointSize: 24
-            textFormat: Text.PlainText // 纯文本
-            text: "<b>Hello</b> <i>World!</i>"
-        }
-        Text {
-            font.pointSize: 24
-            textFormat: Text.MarkdownText
-            text: "**Hello** *World!*"
-        }
-    }
-
 }
