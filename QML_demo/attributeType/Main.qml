@@ -3,22 +3,33 @@ import QtQuick.Window
 import QtQuick.Controls
 import QtQuick.Layouts
 
-Window {
+import MyObj
 
-    width: 640
+Window {
+    id: window
+    width: SCERRN_WIDTH
     height: 480
     visible: true
     title: qsTr("Hello World")
+
+    MyObject {
+        iValue: 10
+        sString: '张三'
+
+        Component.onCompleted: {
+            console.log(iValue, sString)
+        }
+    }
 
     // 偏移量
     // x: 0
     // y: 0
 
     // 最大最小宽高
-    minimumWidth: 600
-    minimumHeight: 400
-    maximumWidth: 800
-    maximumHeight: 500
+    //    minimumWidth: 600
+    //    minimumHeight: 400
+    //    maximumWidth: 800
+    //    maximumHeight: 500
 
     // 透明度
     // opacity: 0.5 // 0-1
@@ -634,79 +645,289 @@ Window {
     //            }
     //        }
     //    }
-    ListView {
-        id: lv
-        width: 180
-        height: 200
-        header: Rectangle {
-            width: parent.width
-            height: 20
-            color: 'gray'
-        }
-        footer: Rectangle {
-            width: parent.width
-            height: 20
-            color: 'gray'
-        }
+    //    ListView {
+    //        id: lv
+    //        width: 180
+    //        height: 200
+    //        header: Rectangle {
+    //            width: parent.width
+    //            height: 20
+    //            color: 'gray'
+    //        }
+    //        footer: Rectangle {
+    //            width: parent.width
+    //            height: 20
+    //            color: 'gray'
+    //        }
 
-        // model: ['111', '222', '333']
-        highlight: Rectangle {
-            color: 'yellow'
-        }
+    //        // model: ['111', '222', '333']
+    //        highlight: Rectangle {
+    //            color: 'yellow'
+    //        }
 
-        model: ListModel {
-            ListElement {
-                name: 'name1'
-                number: 'num1'
-            }
-            ListElement {
-                name: 'name2'
-                number: 'num2'
-            }
-            ListElement {
-                name: 'name3'
-                number: 'num3'
-            }
-        }
-        spacing: 10
-        delegate: Rectangle {
-            width: parent.width
-            height: 30
-            color: 'transparent'
-            Text {
-                // id: name
-                text: `${name} ${number}`
-            }
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    console.log(index)
-                    console.log(lv.currentIndex)
-                    lv.currentIndex = index
-                }
-            }
-        }
+    //        model: ListModel {
+    //            ListElement {
+    //                name: 'name1'
+    //                number: 'num1'
+    //            }
+    //            ListElement {
+    //                name: 'name2'
+    //                number: 'num2'
+    //            }
+    //            ListElement {
+    //                name: 'name3'
+    //                number: 'num3'
+    //            }
+    //        }
+    //        spacing: 10
+    //        delegate: Rectangle {
+    //            width: parent.width
+    //            height: 30
+    //            color: 'transparent'
+    //            Text {
+    //                // id: name
+    //                text: `${name} ${number}`
+    //            }
+    //            MouseArea {
+    //                anchors.fill: parent
+    //                onClicked: {
+    //                    console.log(index)
+    //                    console.log(lv.currentIndex)
+    //                    lv.currentIndex = index
+    //                }
+    //            }
+    //        }
 
-        section.property: "name"
-        section.criteria: ViewSection.FullString
-        section.delegate: sectionHeading
+    //        section.property: "name"
+    //        section.criteria: ViewSection.FullString
+    //        section.delegate: sectionHeading
 
-        // The delegate for each section header
-        Component {
-            id: sectionHeading
-            Rectangle {
-                width: lv.width
-                height: childrenRect.height
-                color: "lightsteelblue"
+    //        // The delegate for each section header
+    //        Component {
+    //            id: sectionHeading
+    //            Rectangle {
+    //                width: lv.width
+    //                height: childrenRect.height
+    //                color: "lightsteelblue"
 
-                required property string section
+    //                required property string section
 
-                Text {
-                    text: parent.section
-                    font.bold: true
-                    font.pixelSize: 20
-                }
-            }
-        }
-    }
+    //                Text {
+    //                    text: parent.section
+    //                    font.bold: true
+    //                    font.pixelSize: 20
+    //                }
+    //            }
+    //        }
+    //    }
+    //    ComboBox {
+    //        // editable: true
+    //        //        model: 3
+    //        // model: ['aaa', 'bbb', 'ccc']
+    //        textRole: 'key'
+    //        valueRole: 'value'
+    //        displayText: currentText + "+" + currentValue
+    //        model: ListModel {
+    //            id: model
+    //            ListElement {
+    //                key: "First"
+    //                value: 123
+    //            }
+    //            ListElement {
+    //                key: "Second"
+    //                value: 456
+    //            }
+    //            ListElement {
+    //                key: "Third"
+    //                value: 789
+    //            }
+    //        }
+    //        onAccepted: {
+    //            if (find(editText) === -1)
+    //                model.append({
+    //                                 "text": editText
+    //                             })
+    //        }
+    //        onCurrentTextChanged: {
+    //            console.log('text:', currentText)
+    //        }
+    //        onCurrentValueChanged: {
+    //            console.log('value', currentValue)
+    //        }
+    //        //        validator: IntValidator {
+    //        //            top: 20
+    //        //            bottom: 0
+    //        //        }
+    //        validator: RegularExpressionValidator {
+    //            regularExpression: /[0-9A-F]+/
+    //        }
+    //        onAcceptableInputChanged: {
+    //            // 当前有没有匹配validator 验证器 验证成功，返回true
+    //            console.log(acceptableInput)
+    //        }
+    //    }
+    //    ComboBox {
+    //        id: control
+    //        model: ["First", "Second", "Third"]
+    //        delegate: ItemDelegate {
+    //            width: control.width
+    //            contentItem: Text {
+    //                text: modelData
+    //                color: "#21be2b"
+    //                font: control.font
+    //                elide: Text.ElideRight
+    //                verticalAlignment: Text.AlignVCenter
+    //            }
+    //            highlighted: control.highlightedIndex === index
+    //        }
+
+    //        indicator: Canvas {
+    //            id: canvas
+    //            x: control.width - width - control.rightPadding
+    //            y: control.topPadding + (control.availableHeight - height) / 2
+    //            width: 12
+    //            height: 8
+    //            contextType: "2d"
+
+    //            Connections {
+    //                target: control
+    //                function onPressedChanged() {
+    //                    canvas.requestPaint()
+    //                }
+    //            }
+
+    //            onPaint: {
+    //                context.reset()
+    //                context.moveTo(0, 0)
+    //                context.lineTo(width, 0)
+    //                context.lineTo(width / 2, height)
+    //                context.closePath()
+    //                context.fillStyle = control.pressed ? "#17a81a" : "#21be2b"
+    //                context.fill()
+    //            }
+    //        }
+
+    //        contentItem: Text {
+    //            leftPadding: 0
+    //            rightPadding: control.indicator.width + control.spacing
+
+    //            text: control.displayText
+    //            font: control.font
+    //            color: control.pressed ? "#17a81a" : "#21be2b"
+    //            verticalAlignment: Text.AlignVCenter
+    //            elide: Text.ElideRight
+    //        }
+
+    //        background: Rectangle {
+    //            implicitWidth: 120
+    //            implicitHeight: 40
+    //            border.color: control.pressed ? "#17a81a" : "#21be2b"
+    //            border.width: control.visualFocus ? 2 : 1
+    //            radius: 2
+    //        }
+
+    //        popup: Popup {
+    //            y: control.height - 1
+    //            width: control.width
+    //            implicitHeight: contentItem.implicitHeight
+    //            padding: 1
+
+    //            contentItem: ListView {
+    //                clip: true
+    //                implicitHeight: contentHeight
+    //                model: control.popup.visible ? control.delegateModel : null
+    //                currentIndex: control.highlightedIndex
+
+    //                // ScrollIndicator.vertical: ScrollIndicator {}
+    //                //                ScrollBar.vertical: ScrollBar {
+    //                //                    policy: ScrollBar.AlwaysOn
+    //                //                }
+
+    //                // 禁止拖拽滚动
+    //                interactive: false
+
+    //                // 禁止顶部底部回弹效果
+    //                boundsBehavior: Flickable.StopAtBounds
+    //            }
+
+    //            background: Rectangle {
+    //                border.color: "#21be2b"
+    //                radius: 2
+    //            }
+    //        }
+    //    }
+
+    // focus 的使用
+    //    Button {
+    //        id: btn
+    //        width: 100
+    //        height: 50
+    //        focus: true
+    //        // focusPolicy: Qt.NoFocus
+    //        background: Rectangle {
+    //            anchors.fill: parent
+    //            border.color: btn.focus ? "blue" : 'black'
+    //        }
+    //        onFocusChanged: {
+    //            console.log("focus", focus)
+    //        }
+    //        Component.onCompleted: {
+    //            console.log('focusPolicy', focusPolicy)
+    //            console.log('Qt.StrongFocus', Qt.StrongFocus)
+    //        }
+    //        onFocusReasonChanged: {
+    //            console.log('focusReason', focusReason)
+    //        }
+    //    }
+    //    Rectangle {
+    //        id: rect1
+    //        width: 300
+    //        height: 200
+    //        Text {
+    //            id: text1
+    //            focus: true
+    //            text: qsTr(`rect1 focus ${text1.focus} activeFocus ${text1.activeFocus}`)
+    //        }
+    //    }
+
+    //    Rectangle {
+    //        id: rect2
+    //        width: 300
+    //        height: 200
+    //        y: 250
+    //        Text {
+    //            id: text2
+    //            focus: true
+    //            text: qsTr(`rect2 focus ${text2.focus} activeFocus ${text2.activeFocus}`)
+    //            Component.onCompleted: {
+
+    //            }
+    //        }
+    //    }
+
+    //    自定义信号
+    //    signal testSig(string s, int value)
+
+    //    Button {
+    //        width: 100
+    //        height: 100
+    //        onClicked: {
+    //            testSig('zhangsan', '99')
+    //        }
+    //    }
+
+    //    Connections {
+    //        target: window
+    //        //        onTestSig: {
+    //        //            console.log(s, value)
+    //        //        }
+    //        function onTestSig(s, value) {
+    //            console.log(s, value)
+    //        }
+    //    }
+
+    // 私有化数据
+    //    QtObject {
+
+    //    }
 }

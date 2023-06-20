@@ -11,6 +11,8 @@ find_package(Qt6 COMPONENTS QuickControls2 REQUIRED)
 
 qt_add_executable(appattributeType
     main.cpp
+    myobject.h
+    myobject.cpp
 )
 
 qt_add_qml_module(appattributeType
@@ -34,6 +36,7 @@ target_link_libraries(appattributeType
 )
 
 target_link_libraries(appattributeType PRIVATE Qt6::QuickControls2)
+
 
 install(TARGETS appattributeType
     BUNDLE DESTINATION .
