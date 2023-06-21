@@ -1,9 +1,16 @@
 #include "myobject.h"
+#include <QJsonObject>
 
 MyObject::MyObject(QObject *parent)
     : QObject{parent}
 {
 
+}
+
+MyObject *MyObject::getInstance()
+{
+    static MyObject * obj = new MyObject();
+    return obj;
 }
 
 int MyObject::iValue() const
@@ -30,4 +37,15 @@ void MyObject::setSString(const QString &newSString)
         return;
     m_sString = newSString;
     emit sStringChanged();
+}
+
+void MyObject::func()
+{
+    emit cppSig(100, "gogo");
+    qDebug() << __FUNCTION__;
+}
+
+void MyObject::cppSlot(int i, QString s)
+{
+    qDebug() << __FUNCTION__ << "  " << i << "  " << s;
 }

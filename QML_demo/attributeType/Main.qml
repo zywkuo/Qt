@@ -11,15 +11,49 @@ Window {
     height: 480
     visible: true
     title: qsTr("Hello World")
+    objectName: 'window'
 
-    MyObject {
-        iValue: 10
-        sString: '张三'
+    signal qmlSig(int i, string s)
 
-        Component.onCompleted: {
-            console.log(iValue, sString)
+    function qmlSlot(i, s) {
+        console.log("qml ", i, s)
+    }
+
+    //    MyObject {
+    //        id: myobjid
+    //        iValue: 10
+    //        sString: '张三'
+    //        Component.onCompleted: {
+    //            console.log(iValue, sString)
+    //        }
+    //    }
+    Button {
+        objectName: 'mybutton'
+        onClicked: {
+            // qmlSig(10, 'haha')
+            // myobjid.func()
+            // myobjid.cppSig(99, 'xixi')
+            // myobjid.func()
+            MyObject.func()
         }
     }
+
+    //    Connections {
+    //        target: MyObject
+    //        function onCppSig(i, s) {
+    //            qmlSlot(i, s)
+    //        }
+    //    }
+
+    //    Connections {
+    //        target: window
+    //        function onQmlSig(i, s) {
+    //            myobjid.cppSlot(i, s)
+    //        }
+    //    }
+    //    Component.onCompleted: {
+    //        qmlSig.connect(myobjid.cppSlot)
+    //    }
 
     // 偏移量
     // x: 0
