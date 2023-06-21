@@ -8,6 +8,7 @@
 #include <QObject>
 
 #include "myobject.h"
+#include "qobjectdefs.h"
 
 int main(int argc, char *argv[]) {
     QGuiApplication app(argc, argv);
@@ -54,6 +55,13 @@ int main(int argc, char *argv[]) {
     QObject::connect(MyObject::getInstance(), SIGNAL(cppSig(QVariant, QVariant)), window, SLOT(qmlSlot(QVariant, QVariant)));
 
     // qDebug() << buttonObj;
+
+    QVariant res;
+    QVariant arg_1 = 123;
+    QVariant arg_2 = "lelele";
+    QMetaObject::invokeMethod(window, "qmlFunc", Q_RETURN_ARG(QVariant,res), Q_ARG(QVariant,arg_1), Q_ARG(QVariant,arg_2));
+
+    qDebug() << "res = " << res;
 
     return app.exec();
 }

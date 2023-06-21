@@ -19,6 +19,10 @@ Window {
         console.log("qml ", i, s)
     }
 
+    function qmlFunc(i, s) {
+        console.log("qmlFunc Success!!!")
+    }
+
     //    MyObject {
     //        id: myobjid
     //        iValue: 10
