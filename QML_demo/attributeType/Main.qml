@@ -5,6 +5,8 @@ import QtQuick.Layouts
 
 import MyObj
 
+import Qt5Compat.GraphicalEffects
+
 Window {
     id: window
     width: SCERRN_WIDTH
@@ -13,6 +15,9 @@ Window {
     title: qsTr("Hello World")
     objectName: 'window'
 
+    // ListView contentItem 获取所有元素
+    // itemAt(0).text 获取元素
+    // for循环 元素id.chidren 获取所有元素
     signal qmlSig(int i, string s)
 
     function qmlSlot(i, s) {
@@ -23,6 +28,149 @@ Window {
         console.log("qmlFunc Success!!!")
     }
 
+    property int time: 0
+    Timer {
+        id: timer
+        interval: 1000
+        // running: true
+        repeat: true
+        triggeredOnStart: true
+        onTriggered: {
+            time += 1
+        }
+    }
+
+    Text {
+        id: txt
+        text: time
+        font.pixelSize: 66
+        anchors.centerIn: parent
+    }
+
+    Button {
+        id: startBtn
+        text: 'start'
+        onClicked: {
+            timer.start()
+        }
+    }
+
+    Button {
+        id: startBtn1
+        x: 200
+        text: 'stop'
+        onClicked: {
+            timer.stop()
+        }
+    }
+
+    //    Rectangle {
+    //        id: rect
+    //        width: 19
+    //        height: 204
+    //        x: 300
+    //        y: 100
+    //        border.width: 2
+    //        border.color: 'black'
+    //        radius: 6
+
+    //        Grid {
+    //            id: grid
+    //            width: parent.width - 4
+    //            height: parent.height - 4
+    //            //anchors.margins: 2
+    //            columns: 3
+    //            anchors.centerIn: parent
+    //            Repeater {
+    //                model: grid.width / 5 * grid.height / 5
+    //                Rectangle {
+    //                    width: 5
+    //                    height: 5
+    //                    color: index % 2 ? 'black' : '#fff'
+    //                }
+    //            }
+    //        }
+    //    }
+
+    //    Button {
+    //        onClicked: {
+    //            rect.height -= 10
+    //        }
+    //    }
+
+    //    Rectangle {
+    //        id: maskRect
+    //        x: 200
+    //        y: 100
+    //        width: grid.width
+    //        height: grid.height
+    //        visible: false
+    //        radius: 10
+    //        border.color: 'red'
+    //    }
+    //    Rectangle {
+    //        width: grid.width + 4
+    //        height: grid.height + 4
+    //        border.color: 'black'
+    //        radius: 10
+    //        border.width: 3
+    //        OpacityMask {
+    //            source: grid
+    //            maskSource: maskRect
+    //            anchors.fill: maskRect
+    //            anchors.margins: 2
+    //        }
+    //    }
+
+    //    Column {
+    //        id: col
+    //        spacing: 10
+    //        Repeater {
+    //            id: rep
+    //            model: ListModel {}
+
+    //            Button {
+    //                width: 100
+    //                height: 50
+    //                text: name
+    //            }
+    //        }
+
+    //        move: Transition {
+    //            NumberAnimation {
+    //                properties: "x,y"
+    //                duration: 1000
+    //            }
+    //        }
+    //        add: Transition {
+    //            NumberAnimation {
+    //                properties: "x,y"
+    //                duration: 1000
+    //            }
+    //        }
+
+    //        populate: Transition {
+    //            NumberAnimation {
+    //                properties: "x,y"
+    //                from: 200
+    //                duration: 200
+    //                easing.type: Easing.InOutQuad
+    //            }
+    //        }
+    //    }
+
+    //    Button {
+    //        anchors.bottom: parent.bottom
+    //        anchors.left: parent.left
+    //        anchors.bottomMargin: 20
+
+    //        onClicked: {
+    //            rep.model.insert(0, {
+    //                                 "name": rep.model.count
+    //                             })
+    //        }
+    //    }
+
     //    MyObject {
     //        id: myobjid
     //        iValue: 10
@@ -31,16 +179,16 @@ Window {
     //            console.log(iValue, sString)
     //        }
     //    }
-    Button {
-        objectName: 'mybutton'
-        onClicked: {
-            // qmlSig(10, 'haha')
-            // myobjid.func()
-            // myobjid.cppSig(99, 'xixi')
-            // myobjid.func()
-            MyObject.func()
-        }
-    }
+    //    Button {
+    //        objectName: 'mybutton'
+    //        onClicked: {
+    //            // qmlSig(10, 'haha')
+    //            // myobjid.func()
+    //            // myobjid.cppSig(99, 'xixi')
+    //            // myobjid.func()
+    //            MyObject.func()
+    //        }
+    //    }
 
     //    Connections {
     //        target: MyObject
