@@ -9,12 +9,16 @@
 
 #include "myobject.h"
 #include "qobjectdefs.h"
+#include "mylistmodel.h"
 
 int main(int argc, char *argv[]) {
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
     QQuickStyle::setStyle("Basic");
+
+    // engine.rootContext()->setContextProperty("MyListModel", MyListModel::getInstance());
+    qmlRegisterSingletonInstance("MyModel",1,0,"MyListModel",MyListModel::getInstance());
 
     // 创建全局对象
     QQmlContext *context = engine.rootContext();

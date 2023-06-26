@@ -7,6 +7,8 @@ import MyObj
 
 import Qt5Compat.GraphicalEffects
 
+import MyModel
+
 Window {
     id: window
     width: SCERRN_WIDTH
@@ -28,41 +30,57 @@ Window {
         console.log("qmlFunc Success!!!")
     }
 
-    property int time: 0
-    Timer {
-        id: timer
-        interval: 1000
-        // running: true
-        repeat: true
-        triggeredOnStart: true
-        onTriggered: {
-            time += 1
+    ListView {
+        width: 300
+        height: 300
+        //        model: ListModel {
+        //            ListElement {
+        //                name: 'name'
+        //                value: '1'
+        //            }
+        //        }
+        model: MyListModel
+        delegate: Text {
+            id: txt
+            text: name + value
         }
     }
 
-    Text {
-        id: txt
-        text: time
-        font.pixelSize: 66
-        anchors.centerIn: parent
-    }
+    //    property int time: 0
+    //    Timer {
+    //        id: timer
+    //        interval: 1000
+    //        // running: true
+    //        repeat: true
+    //        triggeredOnStart: true
+    //        onTriggered: {
+    //            time += 1
+    //        }
+    //    }
 
-    Button {
-        id: startBtn
-        text: 'start'
-        onClicked: {
-            timer.start()
-        }
-    }
+    //    Text {
+    //        id: txt
+    //        text: time
+    //        font.pixelSize: 66
+    //        anchors.centerIn: parent
+    //    }
 
-    Button {
-        id: startBtn1
-        x: 200
-        text: 'stop'
-        onClicked: {
-            timer.stop()
-        }
-    }
+    //    Button {
+    //        id: startBtn
+    //        text: 'start'
+    //        onClicked: {
+    //            timer.start()
+    //        }
+    //    }
+
+    //    Button {
+    //        id: startBtn1
+    //        x: 200
+    //        text: 'stop'
+    //        onClicked: {
+    //            timer.stop()
+    //        }
+    //    }
 
     //    Rectangle {
     //        id: rect

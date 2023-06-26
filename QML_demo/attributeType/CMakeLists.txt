@@ -11,8 +11,8 @@ find_package(Qt6 COMPONENTS QuickControls2 REQUIRED)
 
 qt_add_executable(appattributeType
     main.cpp
-    myobject.h
-    myobject.cpp
+    myobject.h myobject.cpp
+    mylistmodel.h mylistmodel.cpp
 )
 
 qt_add_qml_module(appattributeType
