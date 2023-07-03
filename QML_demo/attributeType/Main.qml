@@ -9,6 +9,9 @@ import Qt5Compat.GraphicalEffects
 
 import MyModel
 
+import QtQml.XmlListModel
+import QtQuick.Particles
+
 Window {
     id: window
     width: SCERRN_WIDTH
@@ -30,21 +33,143 @@ Window {
         console.log("qmlFunc Success!!!")
     }
 
-    ListView {
-        width: 300
-        height: 300
-        //        model: ListModel {
-        //            ListElement {
-        //                name: 'name'
-        //                value: '1'
-        //            }
-        //        }
-        model: MyListModel
-        delegate: Text {
-            id: txt
-            text: name + value
+    color: "grey"
+
+    //    动画特效
+    //    Glow
+    //    Emitter
+    //    Attractor
+    MouseArea {
+        id: mouse
+        anchors.fill: parent
+        hoverEnabled: true
+    }
+
+    Text {
+        id: butterfly
+        text: qsTr("Waitting")
+        color: 'black'
+        font.pixelSize: 66
+        anchors.centerIn: parent
+    }
+    Glow {
+        id: glow
+        anchors.fill: butterfly
+        radius: 10
+        color: "white"
+        source: butterfly
+        SequentialAnimation {
+            running: true
+            loops: Animation.Infinite
+            NumberAnimation {
+                target: glow
+                property: "spread"
+                to: 0
+                duration: 1000
+            }
+            NumberAnimation {
+                target: glow
+                property: "spread"
+                to: 0.5
+                duration: 1000
+            }
         }
     }
+    ParticleSystem {
+        id: particleSystem
+    }
+
+    Emitter {
+        // 发射器
+        id: emitter
+        anchors.centerIn: parent
+        width: 300
+        height: 300
+        system: particleSystem
+        emitRate: 10
+        lifeSpan: 600
+        lifeSpanVariation: 800
+        size: 30
+        velocity: PointDirection {
+            x: -45
+            // 偏移
+            //            xVariation: 0
+            //            yVariation: 100 / 6
+        }
+    }
+
+    ImageParticle {
+        id: img
+        source: "icon.png"
+        system: particleSystem
+        color: Qt.rgba(153 / 255, 217 / 255, 234 / 255, 1.0)
+        colorVariation: 0.3 // 根据color按照比例随机修改
+    }
+
+    Attractor {
+        anchors.fill: parent
+        enabled: true
+        system: particleSystem
+        pointX: mouse.mouseX
+        pointY: mouse.mouseY
+        strength: -100000000
+        affectedParameter: Attractor.Acceleration
+        proportionalToDistance: Attractor.InverseQuadratic
+    }
+
+    BusyIndicator {
+        width: 100
+        height: 100
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottomMargin: 20
+    }
+
+    //    XmlListModel {
+    //        id: xmlModel
+    //        source: "file.xml"
+    //        query: "/rss/channel/item"
+
+    //        XmlListModelRole {
+    //            name: "title"
+    //            elementName: "title"
+    //        }
+    //        XmlListModelRole {
+    //            name: "pubDate"
+    //            elementName: "pubDate"
+    //        }
+    //        XmlListModelRole {
+    //            name: "link"
+    //            elementName: "link"
+    //        }
+    //    }
+
+    //    ListView {
+    //        width: 0.5 * parent.width
+    //        height: 300
+    //        model: xmlModel
+    //        delegate: Text {
+    //            width: parent.width
+    //            wrapMode: Text.WordWrap
+    //            text: title + ": " + pubDate + "; link: " + link
+    //        }
+    //    }
+
+    //    ListView {
+    //        width: 300
+    //        height: 300
+    //        //        model: ListModel {
+    //        //            ListElement {
+    //        //                name: 'name'
+    //        //                value: '1'
+    //        //            }
+    //        //        }
+    //        model: MyListModel
+    //        delegate: Text {
+    //            id: txt
+    //            text: name + value
+    //        }
+    //    }
 
     //    property int time: 0
     //    Timer {

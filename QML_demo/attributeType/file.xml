@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <item>
+      <title>Qt 6.0.2 Released</title>
+      <link>https://www.qt.io/blog/qt-6.0.2-released</link>
+      <pubDate>Wed, 03 Mar 2021 12:40:43 GMT</pubDate>
+    </item>
+    <item>
+      <title>Qt 6.1 Beta Released</title>
+      <link>https://www.qt.io/blog/qt-6.1-beta-released</link>
+      <pubDate>Tue, 02 Mar 2021 13:05:47 GMT</pubDate>
+    </item>
+    <item>
+      <title>Qt Creator 4.14.1 released</title>
+      <link>https://www.qt.io/blog/qt-creator-4.14.1-released</link>
+      <pubDate>Wed, 24 Feb 2021 13:53:21 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

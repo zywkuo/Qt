@@ -10,6 +10,9 @@ find_package(Qt6 COMPONENTS QuickControls2 REQUIRED)
 
 
 qt_add_executable(appattributeType
+
+    MACOSX_BUNDLE
+
     main.cpp
     myobject.h myobject.cpp
     mylistmodel.h mylistmodel.cpp
@@ -18,9 +21,13 @@ qt_add_executable(appattributeType
 qt_add_qml_module(appattributeType
     URI attributeType
     VERSION 1.0
-    QML_FILES Main.qml
+    QML_FILES
+        Main.qml
     RESOURCES
+        file.xml
         images/1.jpg
+        images/football1.png
+        icon.png
 )
 
 set_target_properties(appattributeType PROPERTIES
